@@ -1,0 +1,8 @@
+vala-mode-el for Debian
+---------------------------
+
+The version number is in a comment in the sole upstream file.
+Said file is an attachment to https://live.gnome.org/Vala/Emacs
+and as such, I am repackaging it into a tar file manually.
+
+ -- Barak A. Pearlmutter <bap@debian.org>, Wed, 26 Sep 2012 21:49:10 +0100

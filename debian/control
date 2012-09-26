@@ -1,0 +1,17 @@
+Source: vala-mode-el
+Section: editors
+Priority: extra
+Maintainer: Barak A. Pearlmutter <bap@debian.org>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.4
+Homepage: https://live.gnome.org/Vala/Emacs
+Vcs-Git: git://git.debian.org/collab-maint/vala-mode-el.git
+Vcs-Browser: http://git.debian.org/?p=collab-maint/vala-mode-el.git;a=summary
+
+Package: vala-mode-el
+Architecture: all
+Depends: ${misc:Depends}
+Enhances: valac, emacs, emacs23, emacs24
+Description: Emacs editor major mode for vala source code
+ The package provides a Vala major mode for Emacsen, and sets it up
+ for files with extension vala and vapi.
