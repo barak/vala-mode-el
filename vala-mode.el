@@ -1,4 +1,4 @@
-;;; vala-mode.el --- Vala mode derived mode
+;;; vala-mode.el --- Vala mode derived mode -*- lexical-binding: t -*-
 
 ;; Author:     2005 Dylan R. E. Moonfire
 ;;	       2008 Étienne BERSAC
@@ -46,6 +46,8 @@
 ;;	0.1	: Initial version based on csharp-mode
 ;;
 
+(require 'cl)
+
 ;; This is a copy of the function in cc-mode which is used to handle
 ;; the eval-when-compile which is needed during other times.
 (defun c-filter-ops (ops opgroup-filter op-filter &optional xlate)
@@ -55,13 +57,15 @@
   (cond ((eq opgroup-filter t)
 	 (setq opgroup-filter (lambda (opgroup) t)))
 	((not (functionp opgroup-filter))
-	 (setq opgroup-filter `(lambda (opgroup)
-				 (memq opgroup ',opgroup-filter)))))
+	 (let ((opgroup-filter-orig opgroup-filter))
+	   (setq opgroup-filter (lambda (opgroup)
+				  (memq opgroup opgroup-filter-orig))))))
   (cond ((eq op-filter t)
 	 (setq op-filter (lambda (op) t)))
 	((stringp op-filter)
-	 (setq op-filter `(lambda (op)
-			    (string-match ,op-filter op)))))
+	 (let ((op-filter-orig op-filter))
+	   (setq op-filter (lambda (op)
+			     (string-match op-filter-orig op))))))
   (unless xlate
     (setq xlate 'identity))
   (c-with-syntax-table (c-lang-const c-mode-syntax-table)
@@ -149,22 +153,20 @@
 	 ;; Fontify leading identifiers in fully
 	 ;; qualified names like "Foo.Bar".
 	 ,@(when (c-lang-const c-opt-identifier-concat-key)
-	     `((,(byte-compile
-		  `(lambda (limit)
-		     (while (re-search-forward
-			     ,(concat "\\(\\<" ; 1
-				      "\\(" (c-lang-const c-symbol-key)
-				      "\\)" ; 2
-				      "[ \t\n\r\f\v]*"
-				      (c-lang-const
-				       c-opt-identifier-concat-key)
-				      "[ \t\n\r\f\v]*"
-				      "\\)"
-				      "\\("
-				      (c-lang-const
-				       c-opt-after-id-concat-key)
-				      "\\)")
-			     limit t)
+	     (let ((regexp (concat "\\(\\<" ; 1
+				   "\\(" (c-lang-const c-symbol-key)
+				   "\\)" ; 2
+				   "[ \t\n\r\f\v]*"
+				   (c-lang-const
+				    c-opt-identifier-concat-key)
+				   "[ \t\n\r\f\v]*"
+				   "\\)"
+				   "\\("
+				   (c-lang-const
+				    c-opt-after-id-concat-key)
+				   "\\)")))
+	       `((,(lambda (limit)
+		     (while (re-search-forward regexp limit t)
 		       (unless (progn
 				 (goto-char (match-beginning 0))
 				 (c-skip-comments-and-strings limit))
