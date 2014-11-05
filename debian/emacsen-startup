@@ -4,7 +4,7 @@
 (let ((package-dir (concat "/usr/share/"
 			   (symbol-name debian-emacs-flavor)
 			   "/site-lisp/vala-mode-el")))
-  ;; If package-dir does not exist, this package must have
+  ;; If package-dir does not exist, this package must have been
   ;; removed but not purged, and we should skip the setup.
   (when (file-directory-p package-dir)
 
