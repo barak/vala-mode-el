@@ -16,7 +16,7 @@
 	  (t
 	   (setq load-path (cons package-dir load-path))))
 
-    ;; Installation snippet per https://live.gnome.org/Vala/Emacs
+    ;; Installation snippet per https://wiki.gnome.org/Projects/Vala/Emacs
     (autoload 'vala-mode "vala-mode" "Major mode for editing Vala code." t)
     (add-to-list 'auto-mode-alist '("\\.vala$" . vala-mode))
     (add-to-list 'auto-mode-alist '("\\.vapi$" . vala-mode))
