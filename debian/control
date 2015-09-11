@@ -21,7 +21,7 @@ Description: Emacs editor major mode for vala source code
 
 Package: vala-mode-el
 Architecture: all
-Depends: elpa-vala-mode
+Depends: ${misc:Depends}, elpa-vala-mode
 Description: Transition Package, vala-mode-el to elpa-vala-mode
- Vala mode has been elpa-fied and this is the transition package,
- vala-mode-el to elpa-vala-mode.
+ Vala mode has been elpafied.  Ease transition from vala-mode-el to
+ elpa-vala-mode with this dummy package.
