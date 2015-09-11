@@ -342,10 +342,6 @@
 ;;		  ;; irrelevant menu alternatives.
 ;;		  (cons "Vala" (c-lang-const c-mode-menu vala)))
 
-;;; Autoload mode trigger
-(add-to-list 'auto-mode-alist '("\\.vala$" . vala-mode))
-(add-to-list 'auto-mode-alist '("\\.vapi$" . vala-mode))
-
 ;; Custom variables
 (defcustom vala-mode-hook nil
   "*Hook called by `vala-mode'."
@@ -394,6 +390,23 @@ Key bindings:
   (run-hooks 'c-mode-common-hook)
   (run-hooks 'vala-mode-hook)
   (c-update-modeline))
+
+;;; mode trigger
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.vala$" . vala-mode))
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.vapi$" . vala-mode))
+
+;;;###autoload
+(add-to-list 'file-coding-system-alist '("\\.vala$" . utf-8))
+;;;###autoload
+(add-to-list 'file-coding-system-alist '("\\.vapi$" . utf-8))
+
+;; Use C# semantics when ECB and CEDET are both installed:
+;;;###autoload
+(when (and (file-exists-p "/usr/share/emacs/site-lisp/ecb/ecb.el")
+	       (fboundp 'wisent-csharp-default-setup))
+  (add-hook 'vala-mode-hook #'wisent-csharp-default-setup))
 
 (provide 'vala-mode)
 
