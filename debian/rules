@@ -5,4 +5,4 @@
 
 override_dh_install:
 	dh_install
-	dh_elpa -Nvala-mode-el
+	dh_elpa
