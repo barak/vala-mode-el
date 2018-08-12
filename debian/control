@@ -6,8 +6,8 @@ Uploaders: Barak A. Pearlmutter <bap@debian.org>
 Build-Depends: debhelper (>= 11), dh-elpa (>= 1.10)
 Standards-Version: 4.2.0
 Homepage: https://wiki.gnome.org/Projects/Vala/Emacs
-Vcs-Git: git://anonscm.debian.org/collab-maint/vala-mode-el.git
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/vala-mode-el.git
+Vcs-Git: https://salsa.debian.org/emacsen-team/vala-mode-el.git
+Vcs-Browser: https://salsa.debian.org/emacsen-team/vala-mode-el
 
 Package: elpa-vala-mode
 Architecture: all
