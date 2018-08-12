@@ -3,7 +3,7 @@ Section: editors
 Priority: extra
 Maintainer: Debian Emacs addons team <pkg-emacsen-addons@lists.alioth.debian.org>
 Uploaders: Barak A. Pearlmutter <bap@debian.org>
-Build-Depends: debhelper (>= 9), dh-elpa (>= 1.10)
+Build-Depends: debhelper (>= 11), dh-elpa (>= 1.10)
 Standards-Version: 4.2.0
 Homepage: https://wiki.gnome.org/Projects/Vala/Emacs
 Vcs-Git: git://anonscm.debian.org/collab-maint/vala-mode-el.git
