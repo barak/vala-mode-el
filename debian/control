@@ -1,6 +1,6 @@
 Source: vala-mode-el
 Section: editors
-Priority: extra
+Priority: optional
 Maintainer: Debian Emacs addons team <pkg-emacsen-addons@lists.alioth.debian.org>
 Uploaders: Barak A. Pearlmutter <bap@debian.org>
 Build-Depends: debhelper (>= 11), dh-elpa (>= 1.10)
