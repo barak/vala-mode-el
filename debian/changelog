@@ -1,3 +1,13 @@
+vala-mode-el (0.1-6) unstable; urgency=medium
+
+  * bump policy version
+  * bump debhelper version
+  * swizzle packaging repo to salsa emacsen-team repo
+  * switch priority from extra to optional per policy
+  * secure copyright format URL
+
+ -- Barak A. Pearlmutter <bap@debian.org>  Sun, 12 Aug 2018 11:44:40 +0200
+
 vala-mode-el (0.1-5) unstable; urgency=medium
 
   * Team upload.
