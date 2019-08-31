@@ -1,0 +1,135 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ vala-mode-el (0.1-7) unstable; urgency=medium
+ .
+   * Team upload.
+   * Rebuild with current dh-elpa
+Author: David Bremner <bremner@debian.org>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: 2019-08-31
+
+--- vala-mode-el-0.1.orig/vala-mode.el
++++ vala-mode-el-0.1/vala-mode.el
+@@ -1,4 +1,4 @@
+-;;; vala-mode.el --- Vala mode derived mode
++;;; vala-mode.el --- Vala mode derived mode -*- lexical-binding: t -*-
+ 
+ ;; Author:     2005 Dylan R. E. Moonfire
+ ;;	       2008 Étienne BERSAC
+@@ -46,6 +46,8 @@
+ ;;	0.1	: Initial version based on csharp-mode
+ ;;
+ 
++(require 'cl)
++
+ ;; This is a copy of the function in cc-mode which is used to handle
+ ;; the eval-when-compile which is needed during other times.
+ (defun c-filter-ops (ops opgroup-filter op-filter &optional xlate)
+@@ -55,13 +57,15 @@
+   (cond ((eq opgroup-filter t)
+ 	 (setq opgroup-filter (lambda (opgroup) t)))
+ 	((not (functionp opgroup-filter))
+-	 (setq opgroup-filter `(lambda (opgroup)
+-				 (memq opgroup ',opgroup-filter)))))
++	 (let ((opgroup-filter-orig opgroup-filter))
++	   (setq opgroup-filter (lambda (opgroup)
++				  (memq opgroup opgroup-filter-orig))))))
+   (cond ((eq op-filter t)
+ 	 (setq op-filter (lambda (op) t)))
+ 	((stringp op-filter)
+-	 (setq op-filter `(lambda (op)
+-			    (string-match ,op-filter op)))))
++	 (let ((op-filter-orig op-filter))
++	   (setq op-filter (lambda (op)
++			     (string-match op-filter-orig op))))))
+   (unless xlate
+     (setq xlate 'identity))
+   (c-with-syntax-table (c-lang-const c-mode-syntax-table)
+@@ -149,22 +153,20 @@
+ 	 ;; Fontify leading identifiers in fully
+ 	 ;; qualified names like "Foo.Bar".
+ 	 ,@(when (c-lang-const c-opt-identifier-concat-key)
+-	     `((,(byte-compile
+-		  `(lambda (limit)
+-		     (while (re-search-forward
+-			     ,(concat "\\(\\<" ; 1
+-				      "\\(" (c-lang-const c-symbol-key)
+-				      "\\)" ; 2
+-				      "[ \t\n\r\f\v]*"
+-				      (c-lang-const
+-				       c-opt-identifier-concat-key)
+-				      "[ \t\n\r\f\v]*"
+-				      "\\)"
+-				      "\\("
+-				      (c-lang-const
+-				       c-opt-after-id-concat-key)
+-				      "\\)")
+-			     limit t)
++	     (let ((regexp (concat "\\(\\<" ; 1
++				   "\\(" (c-lang-const c-symbol-key)
++				   "\\)" ; 2
++				   "[ \t\n\r\f\v]*"
++				   (c-lang-const
++				    c-opt-identifier-concat-key)
++				   "[ \t\n\r\f\v]*"
++				   "\\)"
++				   "\\("
++				   (c-lang-const
++				    c-opt-after-id-concat-key)
++				   "\\)")))
++	       `((,(lambda (limit)
++		     (while (re-search-forward regexp limit t)
+ 		       (unless (progn
+ 				 (goto-char (match-beginning 0))
+ 				 (c-skip-comments-and-strings limit))
+@@ -340,10 +342,6 @@
+ ;;		  ;; irrelevant menu alternatives.
+ ;;		  (cons "Vala" (c-lang-const c-mode-menu vala)))
+ 
+-;;; Autoload mode trigger
+-(add-to-list 'auto-mode-alist '("\\.vala$" . vala-mode))
+-(add-to-list 'auto-mode-alist '("\\.vapi$" . vala-mode))
+-
+ ;; Custom variables
+ (defcustom vala-mode-hook nil
+   "*Hook called by `vala-mode'."
+@@ -393,6 +391,23 @@ Key bindings:
+   (run-hooks 'vala-mode-hook)
+   (c-update-modeline))
+ 
++;;; mode trigger
++;;;###autoload
++(add-to-list 'auto-mode-alist '("\\.vala$" . vala-mode))
++;;;###autoload
++(add-to-list 'auto-mode-alist '("\\.vapi$" . vala-mode))
++
++;;;###autoload
++(add-to-list 'file-coding-system-alist '("\\.vala$" . utf-8))
++;;;###autoload
++(add-to-list 'file-coding-system-alist '("\\.vapi$" . utf-8))
++
++;; Use C# semantics when ECB and CEDET are both installed:
++;;;###autoload
++(when (and (file-exists-p "/usr/share/emacs/site-lisp/ecb/ecb.el")
++	       (fboundp 'wisent-csharp-default-setup))
++  (add-hook 'vala-mode-hook #'wisent-csharp-default-setup))
++
+ (provide 'vala-mode)
+ 
+ ;;; vala-mode.el ends here
