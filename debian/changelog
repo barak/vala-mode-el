@@ -1,3 +1,10 @@
+vala-mode-el (0.1-7) unstable; urgency=medium
+
+  * Team upload.
+  * Rebuild with current dh-elpa
+
+ -- David Bremner <bremner@debian.org>  Sat, 31 Aug 2019 09:21:47 -0300
+
 vala-mode-el (0.1-6) unstable; urgency=medium
 
   * bump policy version
