@@ -1,3 +1,9 @@
+vala-mode-el (0.1-8) UNRELEASED; urgency=medium
+
+  * Update maintainer email address
+
+ -- David Krauser <david@krauser.org>  Fri, 04 Oct 2019 14:56:42 -0400
+
 vala-mode-el (0.1-7) unstable; urgency=medium
 
   * Team upload.
