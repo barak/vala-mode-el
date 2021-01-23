@@ -1,8 +1,13 @@
-vala-mode-el (0.1-8) UNRELEASED; urgency=medium
+vala-mode-el (0.1-8) unstable; urgency=medium
 
+  * Team upload
+  [ David Krauser ]
   * Update maintainer email address
 
- -- David Krauser <david@krauser.org>  Fri, 04 Oct 2019 14:56:42 -0400
+  [ David Bremner ]
+  * Rebuild with dh-elpa 2.x
+
+ -- David Bremner <bremner@debian.org>  Sat, 23 Jan 2021 07:15:48 -0400
 
 vala-mode-el (0.1-7) unstable; urgency=medium
 
