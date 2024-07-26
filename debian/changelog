@@ -1,3 +1,12 @@
+vala-mode-el (0.1-9) unstable; urgency=medium
+
+  * Team upload.
+  * Rebuild against dh-elpa 2.1.5.
+    Upload pushed to dgit-repos but not salsa.
+    See <https://lists.debian.org/debian-emacsen/2024/07/msg00077.html>.
+
+ -- Sean Whitton <spwhitton@spwhitton.name>  Fri, 26 Jul 2024 11:28:53 +0900
+
 vala-mode-el (0.1-8) unstable; urgency=medium
 
   * Team upload
