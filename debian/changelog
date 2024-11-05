@@ -1,15 +1,29 @@
-vala-mode-el (0.1-9) UNRELEASED; urgency=medium
+vala-mode-el (0.1-10) UNRELEASED; urgency=medium
 
   * Drop emacs23, emacs24, and emacs25 from Enhances (packages do not exist
     in bullseye).
 
  -- Nicholas D Steeves <sten@debian.org>  Wed, 28 Jul 2021 19:01:06 -0400
 
-vala-mode-el (0.1-8) UNRELEASED; urgency=medium
+vala-mode-el (0.1-9) unstable; urgency=medium
 
+  * Team upload.
+  * Rebuild against dh-elpa 2.1.5.
+    Upload pushed to dgit-repos but not salsa.
+    See <https://lists.debian.org/debian-emacsen/2024/07/msg00077.html>.
+
+ -- Sean Whitton <spwhitton@spwhitton.name>  Fri, 26 Jul 2024 11:28:53 +0900
+
+vala-mode-el (0.1-8) unstable; urgency=medium
+
+  * Team upload
+  [ David Krauser ]
   * Update maintainer email address
 
- -- David Krauser <david@krauser.org>  Fri, 04 Oct 2019 14:56:42 -0400
+  [ David Bremner ]
+  * Rebuild with dh-elpa 2.x
+
+ -- David Bremner <bremner@debian.org>  Sat, 23 Jan 2021 07:15:48 -0400
 
 vala-mode-el (0.1-7) unstable; urgency=medium
 
