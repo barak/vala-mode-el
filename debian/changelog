@@ -6,6 +6,7 @@ vala-mode-el (0.1-10) UNRELEASED; urgency=medium
 
   [ Barak A. Pearlmutter ]
   debian/copyright: use spaces rather than tabs to start continuation lines.
+  Bump debhelper from old 11 to 13.
 
  -- Nicholas D Steeves <sten@debian.org>  Wed, 28 Jul 2021 19:01:06 -0400
 
