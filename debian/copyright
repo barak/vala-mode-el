@@ -4,7 +4,7 @@ Source: <https://wiki.gnome.org/Projects/Vala/Emacs?action=AttachFile&do=get&tar
 
 Files: *
 Copyright: 2005 Dylan R. E. Moonfire
-	   2008 Étienne BERSAC
+           2008 Étienne BERSAC
 License: GPL-2+
 
 Files: debian/*
