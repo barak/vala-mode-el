@@ -8,6 +8,7 @@ vala-mode-el (0.1-10) UNRELEASED; urgency=medium
   debian/copyright: use spaces rather than tabs to start continuation lines.
   Bump debhelper from old 11 to 13.
   Set debhelper-compat version in Build-Depends.
+  Update standards version to 4.7.0, no changes needed.
 
  -- Nicholas D Steeves <sten@debian.org>  Wed, 28 Jul 2021 19:01:06 -0400
 
