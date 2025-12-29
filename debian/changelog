@@ -5,12 +5,12 @@ vala-mode-el (0.1-10) UNRELEASED; urgency=medium
     in bullseye).
 
   [ Barak A. Pearlmutter ]
-  debian/copyright: use spaces rather than tabs to start continuation lines.
-  Bump debhelper from old 11 to 13.
-  Set debhelper-compat version in Build-Depends.
-  Update standards version to 4.7.0, no changes needed.
+  * debian/copyright: use spaces rather than tabs to start continuation lines.
+  * Bump debhelper from old 11 to 13.
+  * Set debhelper-compat version in Build-Depends.
+  * Update standards version to 4.7.3, no changes needed.
 
- -- Nicholas D Steeves <sten@debian.org>  Wed, 28 Jul 2021 19:01:06 -0400
+ -- Barak A. Pearlmutter <bap@debian.org>  Mon, 29 Dec 2025 21:20:37 +0000
 
 vala-mode-el (0.1-9) unstable; urgency=medium
 
