@@ -1,4 +1,4 @@
-vala-mode-el (0.1-10) UNRELEASED; urgency=medium
+vala-mode-el (0.1-10) unstable; urgency=medium
 
   [ Nicholas D Steeves ]
   * Drop emacs23, emacs24, and emacs25 from Enhances (packages do not exist
