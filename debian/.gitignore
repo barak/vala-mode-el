@@ -1,6 +1,7 @@
 /*.debhelper
 /*.debhelper.log
 /*.substvars
+/debhelper-build-stamp
 /elpa-vala-mode/
 /files
 /vala-mode-el/
